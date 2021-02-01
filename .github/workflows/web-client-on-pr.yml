@@ -1,0 +1,29 @@
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "web-client/**"
+
+name: Build Angular
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
+        with:
+          node_version: ${{ matrix.node_version }}
+
+      - name: npm install, lint, test and build
+        run: |
+          npm install
+          npm run lint
+          npm run test
+          npm run build
+        working-directory: ./web-client/
