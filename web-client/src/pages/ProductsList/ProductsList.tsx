@@ -8,6 +8,7 @@ interface Props {
 }
 const useStyles = makeStyles({
   productsGrid: {
+    marginTop: '70px',
     display: 'grid',
     gap: '5px',
     margin: '5px',
