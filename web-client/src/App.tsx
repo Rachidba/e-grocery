@@ -1,25 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Theme from './Theme';
+import { ThemeProvider } from '@material-ui/core/styles';
+import ProductsList from './pages/ProductsList/ProductsList';
+import products from './services/mockProducts';
 
 const App: React.FC = () => {
+  const productsList = products;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={Theme}>
+      <ProductsList products={productsList} />
+    </ThemeProvider>
   );
 };
 
