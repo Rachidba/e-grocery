@@ -1,9 +1,11 @@
 import { createMuiTheme } from '@material-ui/core';
 
+export const primaryColor = '#5657ff';
+
 const Theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#5657ff',
+      main: primaryColor,
     },
   },
   shape: {
