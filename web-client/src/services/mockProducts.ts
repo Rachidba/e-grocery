@@ -1,5 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Product } from '../types/Product';
+
+import { Product } from '../store/shoppingCart/types';
 
 const products: Product[] = [
   {
