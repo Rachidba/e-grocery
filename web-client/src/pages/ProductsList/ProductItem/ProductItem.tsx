@@ -1,51 +1,22 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Product } from '../../../types/Product';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import { Product } from '../../../store/shoppingCart/types';
+import { useDispatch } from 'react-redux';
+import { addProductToCart } from '../../../store/shoppingCart/actions';
+import productItemStyle from './ProductItemStyle';
 
 interface Props {
   product: Product;
 }
-const useStyles = makeStyles(() => ({
-  root: {
-    display: 'flex',
-    flex: '25% auto',
-  },
-  cover: {
-    width: '30%',
-  },
-  details: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  content: {
-    flex: '1 0',
-    whiteSpace: 'nowrap',
-  },
-  controls: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: '0px 6px 6px 15px',
-  },
-  title: {
-    fontWeight: 'bold',
-  },
-  unity: {
-    color: 'grey',
-    paddingTop: '10px',
-  },
-}));
 
 const ProductItem: React.FC<Props> = ({ product }) => {
-  const classes = useStyles();
-
+  const classes = productItemStyle();
+  const dispatch = useDispatch();
   return (
     <Card className={classes.root}>
       <CardMedia
@@ -66,7 +37,12 @@ const ProductItem: React.FC<Props> = ({ product }) => {
           <Typography variant="subtitle1" color="primary">
             <b>{product.price} DH</b>
           </Typography>
-          <Button endIcon={<AddShoppingCartIcon />}>Acheter</Button>
+          <Button
+            endIcon={<AddShoppingCartIcon />}
+            onClick={() => dispatch(addProductToCart(product))}
+          >
+            Acheter
+          </Button>
         </div>
       </div>
     </Card>
