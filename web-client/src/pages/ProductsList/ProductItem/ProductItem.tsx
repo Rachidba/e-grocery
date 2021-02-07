@@ -5,7 +5,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import { Product } from '../../../store/shoppingCart/types';
+import { Product } from '../../../store/types';
 import { useDispatch } from 'react-redux';
 import { addProductToCart } from '../../../store/shoppingCart/actions';
 import productItemStyle from './ProductItemStyle';

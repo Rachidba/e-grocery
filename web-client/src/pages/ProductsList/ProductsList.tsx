@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductItem from './ProductItem/ProductItem';
 import { makeStyles } from '@material-ui/core';
-import { Product } from '../../store/shoppingCart/types';
+import { Product } from '../../store/types';
 
 interface Props {
   products: Product[];
