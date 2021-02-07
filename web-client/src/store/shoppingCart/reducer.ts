@@ -24,7 +24,7 @@ export function shoppingCartReducer(
       return {
         shoppingCartItems: [
           ...state.shoppingCartItems,
-          { product: action.payload, quantity: 0 },
+          { product: action.payload, quantity: 1 },
         ],
       };
     case REMOVE_PRODUCT_FROM_CART:

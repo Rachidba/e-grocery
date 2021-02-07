@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "src/services/mockProducts.ts"  ]
 }
