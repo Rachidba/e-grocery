@@ -1,5 +1,5 @@
+import { Product } from './../types';
 import {
-  Product,
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
   ShoppingCartActionTypes,

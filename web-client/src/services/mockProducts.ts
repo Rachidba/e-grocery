@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import { Product } from '../store/shoppingCart/types';
+import { Product } from '../store/types';
 
 const products: Product[] = [
   {
@@ -11,6 +11,7 @@ const products: Product[] = [
     unity: '425g',
     price: 26.8,
     imgUrl: '/img/champignon.jpg',
+    subcategoryId: 1,
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const products: Product[] = [
     unity: '0,5L',
     price: 3.4,
     imgUrl: '/img/centrale-lait.jpg',
+    subcategoryId: 6,
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ const products: Product[] = [
     unity: '1',
     price: 1.8,
     imgUrl: '/img/jaouda-nature.jpg',
+    subcategoryId: 7,
   },
   {
     id: 4,
@@ -35,6 +38,7 @@ const products: Product[] = [
     unity: '1L',
     price: 8.5,
     imgUrl: '/img/jaouda-uht-1l.png',
+    subcategoryId: 6,
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ const products: Product[] = [
     unity: '5L',
     price: 29,
     imgUrl: '/img/lesieur-5l.png',
+    subcategoryId: 9,
   },
   {
     id: 6,
@@ -51,6 +56,7 @@ const products: Product[] = [
     unity: '24',
     price: 26.8,
     imgUrl: '/img/vache-qui-rit.jpg',
+    subcategoryId: 5,
   },
 ];
 
