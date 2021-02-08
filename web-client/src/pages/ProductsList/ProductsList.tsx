@@ -2,6 +2,7 @@ import React from 'react';
 import ProductItem from './ProductItem/ProductItem';
 import { makeStyles } from '@material-ui/core';
 import { Product } from '../../store/types';
+import { backgroundColor } from '../../Theme';
 
 interface Props {
   products: Product[];
@@ -12,7 +13,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gap: '5px',
     margin: '5px',
-    backgroundColor: '#F3F3F4',
+    backgroundColor: backgroundColor,
   },
 });
 const ProductsList: React.FC<Props> = ({ products }) => {
