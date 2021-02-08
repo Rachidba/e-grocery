@@ -1,16 +1,20 @@
 import React from 'react';
 import Theme from './Theme';
 import { ThemeProvider } from '@material-ui/core/styles';
-import ProductsList from './pages/ProductsList/ProductsList';
-import products from './services/mockProducts';
 import Navbar from './components/Navbar/Navbar';
+import { Route, Switch } from 'react-router-dom';
+import CategoriesList from './pages/CategoriesList/CategoriesList';
+import NotFound from './pages/NotFound/NotFound';
 
 const App: React.FC = () => {
-  const productsList = products;
   return (
     <ThemeProvider theme={Theme}>
       <Navbar />
-      <ProductsList products={productsList} />
+      <Switch>
+        <Route exact path="/" component={CategoriesList} />
+        <Route path="/categories" component={CategoriesList} />
+        <Route component={NotFound} />
+      </Switch>
     </ThemeProvider>
   );
 };
