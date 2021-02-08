@@ -16,3 +16,7 @@ export function getSubcategories(
   return categories.find((category) => category.id == categoryId)
     ?.subcategories;
 }
+
+export function getProductsBySubcategory(subcategoryId: number): Product[] {
+  return products.filter((p) => p.subcategoryId == subcategoryId);
+}
