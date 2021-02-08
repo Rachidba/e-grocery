@@ -1,20 +1,40 @@
 import React from 'react';
-import Theme from './Theme';
-import { ThemeProvider } from '@material-ui/core/styles';
+import Theme, { backgroundColor } from './Theme';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Navbar from './components/Navbar/Navbar';
 import { Route, Switch } from 'react-router-dom';
 import CategoriesList from './pages/CategoriesList/CategoriesList';
 import NotFound from './pages/NotFound/NotFound';
+import SubcategoriesList from './pages/SubcategoriesList/SubcategoriesList';
+import ProductsList from './pages/ProductsList/ProductsList';
+import { Container } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  app: {
+    margin: 0,
+    padding: 0,
+    marginTop: '65px',
+    backgroundColor: backgroundColor,
+  },
+});
 
 const App: React.FC = () => {
+  const classes = useStyles();
   return (
     <ThemeProvider theme={Theme}>
       <Navbar />
-      <Switch>
-        <Route exact path="/" component={CategoriesList} />
-        <Route path="/categories" component={CategoriesList} />
-        <Route component={NotFound} />
-      </Switch>
+      <Container className={classes.app}>
+        <Switch>
+          <Route exact path="/" component={CategoriesList} />
+          <Route path="/categories" component={CategoriesList} />
+          <Route
+            path="/subcategories/:categoryId"
+            component={SubcategoriesList}
+          />
+          <Route path="/products/:subcategoryId" component={ProductsList} />
+          <Route component={NotFound} />
+        </Switch>
+      </Container>
     </ThemeProvider>
   );
 };
