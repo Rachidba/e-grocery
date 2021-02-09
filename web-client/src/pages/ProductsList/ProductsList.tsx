@@ -1,23 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ProductItem from './ProductItem/ProductItem';
 import { makeStyles } from '@material-ui/core';
 import { Product } from '../../store/types';
-import { backgroundColor } from '../../Theme';
+import { getProductsBySubcategory } from '../../services/apiMock';
 
-interface Props {
-  products: Product[];
-}
 const useStyles = makeStyles({
   productsGrid: {
-    marginTop: '70px',
     display: 'grid',
     gap: '5px',
     margin: '5px',
-    backgroundColor: backgroundColor,
+    height: '100vh',
+    alignContent: 'start',
   },
 });
-const ProductsList: React.FC<Props> = ({ products }) => {
+const ProductsList: React.FC = () => {
   const classes = useStyles();
+  const { subcategoryId }: { subcategoryId: string } = useParams();
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const subcategories = getProductsBySubcategory(Number(subcategoryId));
+    if (subcategories instanceof Array) {
+      setProducts(subcategories);
+    }
+  }, []);
   return (
     <div className={classes.productsGrid}>
       {products.map((p) => (
