@@ -1,13 +1,6 @@
-import {
-  Card,
-  CardContent,
-  makeStyles,
-  CardMedia,
-  IconButton,
-} from '@material-ui/core';
-import React, { useState } from 'react';
+import { Card, CardContent, CardMedia, IconButton } from '@material-ui/core';
+import React from 'react';
 import { ShoppingCartItem as CartItem } from '../../../store/shoppingCart/types';
-import { borderRadius, primaryColor } from '../../../Theme';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
@@ -17,67 +10,15 @@ import {
   removeProductFromCart,
 } from '../../../store/shoppingCart/actions';
 import { useDispatch } from 'react-redux';
+import ShoppingCartItemStyle from './ShoppingCartItemStyle';
 
 interface Props {
   shoppingCartItem: CartItem;
 }
-// eslint-disable-next-line max-lines-per-function
-const useStyle = makeStyles(() => ({
-  root: {
-    display: 'flex',
-    flex: '25% auto',
-    height: '80px',
-  },
-  cover: {
-    width: '20%',
-  },
-  details: {
-    width: '100%',
-    display: 'flex',
-    flex: '3fr 1fr',
-    flexDirection: 'row',
-  },
-  content: {
-    flex: '1 0',
-    paddingTop: '3px',
-    whiteSpace: 'nowrap',
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: '16px',
-  },
-  controlItems: {
-    width: '25px',
-    height: '25px',
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    borderRadius: borderRadius,
-    borderColor: primaryColor,
-    padding: 0,
-    textAlign: 'center',
-  },
-  button: {
-    backgroundColor: primaryColor,
-  },
-  controls: {
-    paddingTop: '10px',
-    display: 'flex',
-    flex: '1 1 1 3',
-    alignItems: 'center',
-    columnGap: '2px',
-  },
-  unitaryPrice: {
-    paddingLeft: '5px',
-    fontSize: '12px',
-  },
-  totalPrice: {
-    fontWeight: 'bold',
-    fontSize: '16px',
-  },
-}));
+
 // eslint-disable-next-line max-lines-per-function
 const ShoppingCartItem: React.FC<Props> = ({ shoppingCartItem }) => {
-  const classes = useStyle();
+  const classes = ShoppingCartItemStyle();
   const dispatch = useDispatch();
   return (
     <Card className={classes.root}>

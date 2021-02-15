@@ -17,10 +17,14 @@ export function removeProductFromCart(
   return { type: REMOVE_PRODUCT_FROM_CART, payload: productId };
 }
 
-export function IncrementProductQuantity(productId: number) {
+export function IncrementProductQuantity(
+  productId: number,
+): ShoppingCartActionTypes {
   return { type: INCREMENT_PRODUCT_QUNATITY, payload: productId };
 }
 
-export function DecrementProductQuantity(productId: number) {
+export function DecrementProductQuantity(
+  productId: number,
+): ShoppingCartActionTypes {
   return { type: DECREMENT_PRODUCT_QUNATITY, payload: productId };
 }

@@ -1,4 +1,3 @@
-import { isTemplateExpression } from 'typescript';
 import { Product } from '../types';
 import {
   ShoppingCartState,
