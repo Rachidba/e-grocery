@@ -2,15 +2,19 @@ import { createMuiTheme } from '@material-ui/core';
 
 export const primaryColor = '#5657ff';
 export const backgroundColor = '#F3F3F4';
+export const borderRadius = 4;
 
 const Theme = createMuiTheme({
   palette: {
     primary: {
       main: primaryColor,
     },
+    secondary: {
+      main: '#FFFFFF',
+    },
   },
   shape: {
-    borderRadius: 4,
+    borderRadius: borderRadius,
   },
 
   overrides: {

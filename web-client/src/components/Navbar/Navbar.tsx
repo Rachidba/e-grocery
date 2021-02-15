@@ -4,6 +4,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import navbarStyle from './NavbarStyle';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const classes = navbarStyle();
@@ -15,10 +16,12 @@ const Navbar: React.FC = () => {
       <div className={classes.menu}>
         <MenuIcon color="primary" style={{ fontSize: 35 }} />
       </div>
-      <div className={classes.shoppingCart}>
-        <ShoppingCartIcon color="primary" style={{ fontSize: 35 }} />
-        <span className={classes.cartBasket}>{numberOfProductInCart}</span>
-      </div>
+      <Link to={'/shopping-cart'}>
+        <div className={classes.shoppingCart}>
+          <ShoppingCartIcon color="primary" style={{ fontSize: 35 }} />
+          <span className={classes.cartBasket}>{numberOfProductInCart}</span>
+        </div>
+      </Link>
     </nav>
   );
 };

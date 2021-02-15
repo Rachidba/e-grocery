@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound/NotFound';
 import SubcategoriesList from './pages/SubcategoriesList/SubcategoriesList';
 import ProductsList from './pages/ProductsList/ProductsList';
 import { Container } from '@material-ui/core';
+import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
 
 const useStyles = makeStyles({
   app: {
@@ -32,6 +33,7 @@ const App: React.FC = () => {
             component={SubcategoriesList}
           />
           <Route path="/products/:subcategoryId" component={ProductsList} />
+          <Route path="/shopping-cart" component={ShoppingCart} />
           <Route component={NotFound} />
         </Switch>
       </Container>
