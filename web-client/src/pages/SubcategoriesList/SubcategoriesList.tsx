@@ -13,7 +13,7 @@ const useStyle = makeStyles(() => ({
   subcategories: {
     display: 'grid',
     rowGap: '5px',
-    height: '100vh',
+    minHeight: '100vh',
     alignContent: 'start',
   },
 }));

@@ -8,7 +8,7 @@ const useStyle = makeStyles(() => ({
   categories: {
     display: 'grid',
     rowGap: '5px',
-    height: '100vh',
+    minHeight: '100vh',
     gridColumnStart: 'auto',
     alignContent: 'start',
   },

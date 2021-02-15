@@ -17,5 +17,5 @@ function render() {
 it('Should render Products', () => {
   jest.spyOn(ReactRouter, 'useParams').mockReturnValue({ subcategoryId: '1' });
   const productItemCount = render().find('ProductItem').length;
-  expect(productItemCount).toBe(1);
+  expect(productItemCount).toBe(16);
 });
