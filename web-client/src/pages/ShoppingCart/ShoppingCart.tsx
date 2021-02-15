@@ -8,7 +8,7 @@ import { backgroundColor } from '../../Theme';
 
 const useStyle = makeStyles(() => ({
   root: {
-    height: '100vh',
+    minHeight: '100vh',
   },
   cartItems: {
     backgroundColor: backgroundColor,

@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     display: 'grid',
     gap: '5px',
     margin: '5px',
-    height: '100vh',
+    minHeight: '100vh',
     alignContent: 'start',
   },
 });
