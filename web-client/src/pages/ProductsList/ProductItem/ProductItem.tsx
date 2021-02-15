@@ -26,12 +26,8 @@ const ProductItem: React.FC<Props> = ({ product }) => {
       ></CardMedia>
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <span className={classes.title}>
-            {product.title.length > 25
-              ? product.title.substring(0, 25).concat('...')
-              : product.title}
-          </span>
-          <div className={classes.unity}>Unité: {product.unity}</div>
+          <div className={classes.title}>{product.title}</div>
+          <div className={classes.unity}>{product.unity}</div>
         </CardContent>
         <div className={classes.controls}>
           <Typography variant="subtitle1" color="primary">
