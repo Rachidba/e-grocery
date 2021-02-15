@@ -1,6 +1,8 @@
 import { Product } from './../types';
 import {
   ADD_PRODUCT_TO_CART,
+  DECREMENT_PRODUCT_QUNATITY,
+  INCREMENT_PRODUCT_QUNATITY,
   REMOVE_PRODUCT_FROM_CART,
   ShoppingCartActionTypes,
 } from './types';
@@ -10,7 +12,19 @@ export function addProductToCart(product: Product): ShoppingCartActionTypes {
 }
 
 export function removeProductFromCart(
-  product: Product,
+  productId: number,
 ): ShoppingCartActionTypes {
-  return { type: REMOVE_PRODUCT_FROM_CART, payload: product };
+  return { type: REMOVE_PRODUCT_FROM_CART, payload: productId };
+}
+
+export function IncrementProductQuantity(
+  productId: number,
+): ShoppingCartActionTypes {
+  return { type: INCREMENT_PRODUCT_QUNATITY, payload: productId };
+}
+
+export function DecrementProductQuantity(
+  productId: number,
+): ShoppingCartActionTypes {
+  return { type: DECREMENT_PRODUCT_QUNATITY, payload: productId };
 }
