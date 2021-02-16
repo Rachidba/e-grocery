@@ -5,8 +5,8 @@ const navbarStyle = makeStyles(() => ({
   navbar: {
     display: 'flex',
     justifyContent: 'space-between',
-    paddingTop: '12px',
-    paddingBottom: '6px',
+    paddingTop: '10px',
+    paddingBottom: '0px',
     position: 'fixed',
     width: '100%',
     overflow: 'hidden',

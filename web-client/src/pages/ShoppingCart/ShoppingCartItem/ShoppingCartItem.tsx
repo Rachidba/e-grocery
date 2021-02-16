@@ -29,11 +29,7 @@ const ShoppingCartItem: React.FC<Props> = ({ shoppingCartItem }) => {
       ></CardMedia>
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <span className={classes.title}>
-            {shoppingCartItem.product.title.length > 25
-              ? shoppingCartItem.product.title.substring(0, 25).concat('...')
-              : shoppingCartItem.product.title}
-          </span>
+          <div className={classes.title}>{shoppingCartItem.product.title}</div>
           <div className={classes.controls}>
             <a
               className={[classes.controlItems, classes.button].join(' ')}
@@ -58,7 +54,7 @@ const ShoppingCartItem: React.FC<Props> = ({ shoppingCartItem }) => {
             </a>
             <span className={classes.unitaryPrice}>
               {' '}
-              x {shoppingCartItem.product.price.toFixed(2)} DH
+              x {shoppingCartItem.product.price.toFixed(2)}
             </span>
             <span className={classes.totalPrice}>
               {' '}

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   app: {
     margin: 0,
     padding: 0,
-    marginTop: '65px',
+    paddingTop: '50px',
     backgroundColor: backgroundColor,
   },
 });

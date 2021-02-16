@@ -9,22 +9,26 @@ const ShoppingCartItemStyle = makeStyles(() => ({
     height: '80px',
   },
   cover: {
-    width: '20%',
+    minWidth: '20%',
   },
   details: {
     width: '100%',
     display: 'flex',
-    flex: '3fr 1fr',
+    flex: '90% 10%',
     flexDirection: 'row',
   },
   content: {
+    maxWidth: '80%',
     flex: '1 0',
-    paddingTop: '3px',
-    whiteSpace: 'nowrap',
+    padding: '3px 0px 3px 10px',
   },
   title: {
     fontWeight: 'bold',
     fontSize: '16px',
+    whiteSpace: 'break-spaces',
+    height: '2em',
+    lineHeight: '1em',
+    overflow: 'hidden',
   },
   controlItems: {
     width: '25px',

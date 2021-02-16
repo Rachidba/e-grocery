@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 const productItemStyle = makeStyles(() => ({
   root: {
     display: 'flex',
-    flex: '25% auto',
+    flex: '1fr 3fr',
   },
   cover: {
-    width: '30%',
+    minWidth: '25%',
   },
   details: {
     width: '100%',
@@ -16,15 +16,21 @@ const productItemStyle = makeStyles(() => ({
   content: {
     flex: '1 0',
     whiteSpace: 'nowrap',
+    padding: '10px',
   },
   controls: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: '0px 6px 6px 15px',
+    padding: '0px 8px 6px 10px',
+    alignItems: 'center',
   },
   title: {
     fontWeight: 'bold',
+    whiteSpace: 'break-spaces',
+    height: '2em',
+    lineHeight: '1em',
+    overflow: 'hidden',
   },
   unity: {
     color: 'grey',
