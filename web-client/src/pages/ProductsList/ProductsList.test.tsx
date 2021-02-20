@@ -4,13 +4,16 @@ import configureStore from '../../store/configureStore';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import ReactRouter from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 function render() {
   const store = configureStore();
   return mount(
-    <Provider store={store}>
-      <ProductsList />
-    </Provider>,
+    <Router>
+      <Provider store={store}>
+        <ProductsList />
+      </Provider>
+    </Router>,
   );
 }
 
