@@ -4,6 +4,7 @@ import ProductItem from './ProductItem/ProductItem';
 import { makeStyles } from '@material-ui/core';
 import { Product } from '../../store/types';
 import { getProductsBySubcategory } from '../../services/apiMock';
+import CategoriesBar from './CategoriesBar/CategoriesBar';
 
 const useStyles = makeStyles({
   productsGrid: {
@@ -26,11 +27,14 @@ const ProductsList: React.FC = () => {
     }
   }, []);
   return (
-    <div className={classes.productsGrid}>
-      {products.map((p) => (
-        <ProductItem key={p.id} product={p} />
-      ))}
-    </div>
+    <>
+      <CategoriesBar />
+      <div className={classes.productsGrid}>
+        {products.map((p) => (
+          <ProductItem key={p.id} product={p} />
+        ))}
+      </div>
+    </>
   );
 };
 
