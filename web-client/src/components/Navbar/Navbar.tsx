@@ -40,6 +40,7 @@ const Navbar: React.FC = () => {
         aria-label="back"
         onClick={goToPreviousPath}
         className={classes.backText}
+        size="small"
       >
         <ArrowBackIcon />
         Produits
