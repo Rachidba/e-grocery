@@ -12,6 +12,7 @@ const navbarStyle = makeStyles(() => ({
     overflow: 'hidden',
     top: 0,
     backgroundColor: '#F3F3F4',
+    maxWidth: '1000px',
     zIndex: 30,
   },
   shoppingCart: {
@@ -34,6 +35,9 @@ const navbarStyle = makeStyles(() => ({
     backgroundColor: 'white',
     borderRadius: '50%',
     textAlign: 'center',
+  },
+  backText: {
+    fontSize: '16px',
   },
 }));
 
