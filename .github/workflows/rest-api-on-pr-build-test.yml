@@ -3,7 +3,7 @@ name: Rest API Build and Test
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
     paths:
     - "rest-api/**"
     
