@@ -9,6 +9,8 @@ import SubcategoriesList from './pages/SubcategoriesList/SubcategoriesList';
 import ProductsList from './pages/ProductsList/ProductsList';
 import { Container } from '@material-ui/core';
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
+import ReactGA from 'react-ga';
+import { createBrowserHistory } from 'history';
 
 const useStyles = makeStyles({
   app: {
@@ -17,6 +19,16 @@ const useStyles = makeStyles({
     paddingTop: '50px',
     backgroundColor: backgroundColor,
   },
+});
+
+const trackingId: string =
+  process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID ?? '';
+ReactGA.initialize(trackingId);
+ReactGA.pageview(window.location.pathname + window.location.search);
+const history = createBrowserHistory();
+history.listen((location) => {
+  ReactGA.set({ page: location.pathname }); // Update the user's current page
+  ReactGA.pageview(location.pathname); // Record a pageview for the given page
 });
 
 const App: React.FC = () => {
