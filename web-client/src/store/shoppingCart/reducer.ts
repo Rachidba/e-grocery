@@ -1,5 +1,9 @@
 import { Product } from '../types';
 import {
+  saveShoppingCart,
+  loadShoppingCart,
+} from './../../services/ShoppingCartService';
+import {
   ShoppingCartState,
   ADD_PRODUCT_TO_CART,
   REMOVE_PRODUCT_FROM_CART,
@@ -7,6 +11,8 @@ import {
   INCREMENT_PRODUCT_QUNATITY,
   ShoppingCartItem,
   DECREMENT_PRODUCT_QUNATITY,
+  SAVE_CART_TO_LOCAL_STORAGE,
+  LOAD_CART_FROM_LOCAL_STORAGE,
 } from './types';
 
 const initialState: ShoppingCartState = {
@@ -26,6 +32,10 @@ export function shoppingCartReducer(
       return incrementProduct(state.shoppingCartItems, action.payload);
     case DECREMENT_PRODUCT_QUNATITY:
       return decrementProduct(state.shoppingCartItems, action.payload);
+    case SAVE_CART_TO_LOCAL_STORAGE:
+      return saveCartToLocalStorage(state.shoppingCartItems);
+    case LOAD_CART_FROM_LOCAL_STORAGE:
+      return loadCartFromLocalStorage();
     default:
       return state;
   }
@@ -73,4 +83,12 @@ function decrementProduct(
     })
     .filter((item) => item.quantity >= 1);
   return { shoppingCartItems: newCart };
+}
+function saveCartToLocalStorage(shoppingCartItems: ShoppingCartItem[]) {
+  saveShoppingCart(shoppingCartItems);
+  return { shoppingCartItems };
+}
+function loadCartFromLocalStorage() {
+  const shoppingCart = loadShoppingCart();
+  return { shoppingCartItems: shoppingCart };
 }

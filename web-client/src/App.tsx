@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Theme, { backgroundColor } from './Theme';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Navbar from './components/Navbar/Navbar';
@@ -9,6 +9,11 @@ import SubcategoriesList from './pages/SubcategoriesList/SubcategoriesList';
 import ProductsList from './pages/ProductsList/ProductsList';
 import { Container } from '@material-ui/core';
 import ShoppingCart from './pages/ShoppingCart/ShoppingCart';
+import {
+  LoadCartItemFromLocalStorage,
+  SaveCartItemsToLocalStorage,
+} from './store/shoppingCart/actions';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
   app: {
@@ -21,6 +26,13 @@ const useStyles = makeStyles({
 
 const App: React.FC = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  window.onbeforeunload = () => {
+    dispatch(SaveCartItemsToLocalStorage());
+  };
+  useEffect(() => {
+    dispatch(LoadCartItemFromLocalStorage());
+  }, []);
   return (
     <ThemeProvider theme={Theme}>
       <Navbar />
