@@ -42,4 +42,7 @@ public class Shop implements Serializable {
     @ManyToOne
     @JoinColumn(name="city_id", nullable=false)
     private City city;
+
+    @OneToOne(mappedBy = "shop")
+    private Seller seller;
 }
