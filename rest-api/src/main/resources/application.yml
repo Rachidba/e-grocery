@@ -16,3 +16,12 @@ spring:
       hibernate:
         dialect: org.hibernate.spatial.dialect.postgis.PostgisDialect
         format_sql: true
+
+
+egorcery:
+  security:
+    jwt:
+      tokenExpirationTime: 43800 # Number of minutes => 1 month
+      refreshTokenExpTime: 131400 # 3 months
+      tokenIssuer: http://egrocery.ma
+      tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus

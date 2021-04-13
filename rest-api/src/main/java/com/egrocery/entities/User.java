@@ -30,4 +30,12 @@ public class User {
 
     @Column(name = "is_enabled")
     private boolean isEnabled = false;
+
+    public User(User user) {
+        this.userId = user.userId;
+        this.phoneNumber = user.phoneNumber;
+        this.password = user.password;
+        this.role = user.role;
+        this.isEnabled = user.isEnabled;
+    }
 }
