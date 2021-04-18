@@ -19,6 +19,24 @@ export interface Subcategory {
   subcategoryName: string;
 }
 
+export interface Shop {
+  id: number;
+  name: string;
+  imgUrl: string;
+  geom: Location;
+  distance: number;
+}
+
+export interface ShopWithSelection {
+  shop: Shop;
+  isSelected: boolean;
+}
+
+export interface Location {
+  longitude: number;
+  latitude: number;
+}
+
 export const emptyProduct = {
   id: -1,
   title: '',

@@ -43,6 +43,9 @@ const ShoppingCartItem: React.FC<Props> = ({ shoppingCartItem }) => {
               type="number"
               value={shoppingCartItem.quantity}
               className={classes.controlItems}
+              onChange={() => {
+                return;
+              }}
             />
             <a
               className={[classes.controlItems, classes.button].join(' ')}

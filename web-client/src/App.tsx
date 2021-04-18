@@ -14,6 +14,7 @@ import {
   SaveCartItemsToLocalStorage,
 } from './store/shoppingCart/actions';
 import { useDispatch } from 'react-redux';
+import NearbyShopsList from './pages/NearbyShopsList/NearbyShopsList';
 
 const useStyles = makeStyles({
   app: {
@@ -46,6 +47,7 @@ const App: React.FC = () => {
           />
           <Route path="/products/:subcategoryId" component={ProductsList} />
           <Route path="/shopping-cart" component={ShoppingCart} />
+          <Route path="/nearby-shops" component={NearbyShopsList} />
           <Route component={NotFound} />
         </Switch>
       </Container>

@@ -40,16 +40,15 @@ const Navbar: React.FC = () => {
         aria-label="back"
         onClick={goToPreviousPath}
         className={classes.backText}
-        size="small"
       >
-        <ArrowBackIcon />
-        Produits
+        <ArrowBackIcon style={{ fontSize: 30 }} />
       </IconButton>
     );
   }
   return (
     <nav className={classes.navbar}>
-      {location.pathname.includes('cart')
+      {location.pathname.includes('cart') ||
+      location.pathname.includes('nearby-shops')
         ? renderWithBackArrow()
         : renderWithCard()}
     </nav>

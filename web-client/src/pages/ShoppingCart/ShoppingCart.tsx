@@ -5,10 +5,13 @@ import ShoppingCartItem from './ShoppingCartItem/ShoppingCartItem';
 import { ShoppingCartItem as CartItem } from './../../store/shoppingCart/types';
 import { Button, makeStyles } from '@material-ui/core';
 import { backgroundColor } from '../../Theme';
+import { useHistory } from 'react-router-dom';
+import { getMyLocation } from '../../services/locationService';
 
 const useStyle = makeStyles(() => ({
   root: {
     minHeight: '100vh',
+    marginTop: '25px',
   },
   cartItems: {
     backgroundColor: backgroundColor,
@@ -35,9 +38,23 @@ const useStyle = makeStyles(() => ({
 
 const ShoppingCart: React.FC = () => {
   const classes = useStyle();
+  const history = useHistory();
   const shoppingCartItems: CartItem[] = useSelector(
     (state: RootState) => state.shoppingCart.shoppingCartItems,
   );
+  async function handleClick() {
+    try {
+      const location = await getMyLocation();
+      history.push(
+        '/nearby-shops?location=longitude' +
+          location.longitude +
+          '&latitude=' +
+          location.latitude,
+      );
+    } catch (error) {
+      alert(error);
+    }
+  }
   function totalPrice(): number {
     let total = 0;
     shoppingCartItems.forEach((item) => {
@@ -57,7 +74,9 @@ const ShoppingCart: React.FC = () => {
         <div>{totalPrice().toFixed(2)} DH</div>
       </div>
       <div className={classes.orderButtonContainer}>
-        <Button className={classes.orderButton}> Passer votre commande</Button>
+        <Button className={classes.orderButton} onClick={() => handleClick()}>
+          Choisir l epicier
+        </Button>
       </div>
     </div>
   );
