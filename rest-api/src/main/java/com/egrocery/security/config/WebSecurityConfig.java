@@ -3,6 +3,7 @@ package com.egrocery.security.config;
 import java.util.Arrays;
 import java.util.List;
 
+import com.egrocery.entities.Role;
 import com.egrocery.security.CustomCorsFilter;
 import com.egrocery.security.RestAuthenticationEntryPoint;
 import com.egrocery.security.auth.ajax.AjaxAuthenticationProvider;
@@ -115,9 +116,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .authorizeRequests()
                 .requestMatchers(permitAllEndpointList.toArray(new RequestMatcher[permitAllEndpointList.size()])).permitAll()
-                .antMatchers(HttpMethod.POST, SecurityConstants.CATEGORIES_URL).access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.POST, SecurityConstants.SUBCATEGORIES_URL).access("hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.POST, SecurityConstants.SHOPS_URL).access("hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST, SecurityConstants.CATEGORIES_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
+                .antMatchers(HttpMethod.POST, SecurityConstants.SUBCATEGORIES_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
+                .antMatchers(HttpMethod.POST, SecurityConstants.SHOPS_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
+                .antMatchers(HttpMethod.GET, SecurityConstants.ORDER_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
+                .antMatchers(HttpMethod.POST, SecurityConstants.ORDER_URL).access("hasRole('" + Role.ROLE_BUYER.toString() + "')")
 
                 .and()
                 .authorizeRequests()

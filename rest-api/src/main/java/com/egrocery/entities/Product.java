@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "products")
@@ -30,5 +31,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="subcategory_id", nullable=false)
     private Subcategory subcategory;
+    @OneToMany(mappedBy = "product")
+    private Set<OrderItem> orderItem;
 
 }
