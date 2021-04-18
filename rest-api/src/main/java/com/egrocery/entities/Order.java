@@ -6,22 +6,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "subcategories")
+@Table(name="orders")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Subcategory {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "subcategory_name", nullable = false, unique = true)
-    private String subcategoryName;
+    @OneToMany(mappedBy = "order")
+    private Set<OrderItem> orderItems;
 
-    @ManyToOne
-    @JoinColumn(name="category_id", nullable=false)
-    private Category category;
+    @Column(name = "total_price")
+    private double totalPrice;
 }

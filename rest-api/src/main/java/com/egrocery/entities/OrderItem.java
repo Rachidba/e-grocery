@@ -8,20 +8,24 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "subcategories")
+@Table(name="order_items")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class Subcategory {
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "subcategory_name", nullable = false, unique = true)
-    private String subcategoryName;
+    @ManyToOne
+    @JoinColumn(name="product_id", nullable=false)
+    private Product product;
+
+    @Column(name = "quantity")
+    private int quantity;
 
     @ManyToOne
-    @JoinColumn(name="category_id", nullable=false)
-    private Category category;
+    @JoinColumn(name="order_id", nullable=false)
+    private Order order;
 }
