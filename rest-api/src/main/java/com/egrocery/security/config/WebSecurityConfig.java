@@ -101,7 +101,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 new AntPathRequestMatcher(SecurityConstants.AUTHENTICATION_URL),
                 new AntPathRequestMatcher(SecurityConstants.CATEGORIES_URL, HttpMethod.GET.toString()),
                 new AntPathRequestMatcher(SecurityConstants.SUBCATEGORIES_URL, HttpMethod.GET.toString()),
-                new AntPathRequestMatcher(SecurityConstants.SHOPS_URL, HttpMethod.GET.toString())
+                new AntPathRequestMatcher(SecurityConstants.SHOPS_URL, HttpMethod.GET.toString()),
+                new AntPathRequestMatcher(SecurityConstants.SELLERS_URL, HttpMethod.GET.toString())
         );
 
         http
@@ -121,6 +122,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, SecurityConstants.SHOPS_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
                 .antMatchers(HttpMethod.GET, SecurityConstants.ORDER_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
                 .antMatchers(HttpMethod.POST, SecurityConstants.ORDER_URL).access("hasRole('" + Role.ROLE_BUYER.toString() + "')")
+                .antMatchers(HttpMethod.POST, SecurityConstants.SELLERS_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
 
                 .and()
                 .authorizeRequests()

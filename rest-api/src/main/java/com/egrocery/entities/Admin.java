@@ -11,12 +11,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "admins")
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 @EqualsAndHashCode
 @SuperBuilder
-public class Admin extends User {
-    public String firstName;
-    public String lastName;
+public class Admin extends Profile {
 
 }

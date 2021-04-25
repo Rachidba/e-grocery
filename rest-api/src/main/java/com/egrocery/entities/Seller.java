@@ -15,19 +15,12 @@ import javax.persistence.*;
 @Data
 @EqualsAndHashCode
 @SuperBuilder
-public class Seller extends User {
-
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
-
+public class Seller extends Profile {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shop_id", referencedColumnName = "id")
     private Shop shop;
 
-    public Integer getUserid() {
-        return getUserid();
+    public Integer getProfileId() {
+        return profileId;
     }
 }
