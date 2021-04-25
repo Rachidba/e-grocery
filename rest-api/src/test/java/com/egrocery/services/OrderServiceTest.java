@@ -1,20 +1,12 @@
 package com.egrocery.services;
 
-import com.egrocery.entities.Order;
-import com.egrocery.entities.OrderItem;
-import com.egrocery.entities.Product;
 import com.egrocery.repositories.OrderItemRepository;
 import com.egrocery.repositories.OrderRepository;
 import com.egrocery.repositories.ProductRepository;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Optional;
-
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.when;
 
 @SpringBootTest
 public class OrderServiceTest {

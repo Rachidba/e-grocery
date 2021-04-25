@@ -13,29 +13,26 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @SuperBuilder
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "user_id")
     protected Integer userId;
-
-    @Column(unique = true)
+    @Column(name = "phone_number", unique = true)
     private String phoneNumber;
-
     private String password;
-
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    @Column(name = "is_enabled")
-    private boolean isEnabled = false;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Profile profile;
+    @Column(name = "enabled")
+    private boolean enabled = false;
 
     public User(User user) {
         this.userId = user.userId;
         this.phoneNumber = user.phoneNumber;
         this.password = user.password;
         this.role = user.role;
-        this.isEnabled = user.isEnabled;
+        this.enabled = user.enabled;
     }
 }
