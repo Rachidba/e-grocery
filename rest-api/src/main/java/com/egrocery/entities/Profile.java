@@ -46,4 +46,7 @@ public class Profile {
     public boolean isProfileCompleted() {
         return isProfileCompleted;
     }
+    public String getPhoneNumber() {
+        return user.getPhoneNumber();
+    }
 }

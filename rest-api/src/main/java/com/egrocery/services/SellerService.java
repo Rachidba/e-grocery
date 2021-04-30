@@ -9,6 +9,7 @@ import com.egrocery.repositories.SellerRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 public class SellerService {
@@ -29,6 +30,10 @@ public class SellerService {
     }
     public Seller create(Seller seller) {
         return sellerRepository.save(seller);
+    }
+
+    public List<Seller> getAllSellers() {
+        return sellerRepository.findAll();
     }
 
     @Transactional
