@@ -101,7 +101,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 new AntPathRequestMatcher(SecurityConstants.AUTHENTICATION_URL),
                 new AntPathRequestMatcher(SecurityConstants.CATEGORIES_URL, HttpMethod.GET.toString()),
                 new AntPathRequestMatcher(SecurityConstants.SUBCATEGORIES_URL, HttpMethod.GET.toString()),
-                new AntPathRequestMatcher(SecurityConstants.SHOPS_URL, HttpMethod.GET.toString())
+                new AntPathRequestMatcher(SecurityConstants.SHOPS_URL, HttpMethod.GET.toString()),
+                new AntPathRequestMatcher(SecurityConstants.PRODUCTS_URL, HttpMethod.GET.toString())
         );
 
         http
