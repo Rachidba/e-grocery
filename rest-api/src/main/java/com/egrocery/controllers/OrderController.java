@@ -1,7 +1,7 @@
 package com.egrocery.controllers;
 
 import com.egrocery.entities.Order;
-import com.egrocery.exceptions.ProductNotFoundException;
+import com.egrocery.exceptions.NotFoundException;
 import com.egrocery.models.OrderVo;
 import com.egrocery.services.OrderService;
 import org.springframework.http.HttpStatus;
@@ -31,7 +31,7 @@ public class OrderController {
         try {
             orderService.createOrder(orderVo);
             return ResponseEntity.ok().build();
-        } catch (ProductNotFoundException ex) {
+        } catch (NotFoundException ex) {
             return ResponseEntity.notFound().build();
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.status(400).build();

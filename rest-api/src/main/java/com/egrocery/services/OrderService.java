@@ -2,7 +2,7 @@ package com.egrocery.services;
 
 import com.egrocery.entities.Order;
 import com.egrocery.entities.OrderItem;
-import com.egrocery.exceptions.ProductNotFoundException;
+import com.egrocery.exceptions.NotFoundException;
 import com.egrocery.models.OrderVo;
 import com.egrocery.repositories.OrderItemRepository;
 import com.egrocery.repositories.OrderRepository;
@@ -29,7 +29,7 @@ public class OrderService {
     }
 
     //@Transat
-    public void createOrder(OrderVo orderVo) throws ProductNotFoundException, IllegalArgumentException {
+    public void createOrder(OrderVo orderVo) throws NotFoundException, IllegalArgumentException {
         var orderItems = new HashSet<OrderItem>();
         var totalPrice = 0.0;
 
@@ -37,7 +37,7 @@ public class OrderService {
         for (var orderItem: orderVo.getOrderItems()
              ) {
             var maybeProduct = productRepository.findById(orderItem.getProductId());
-            if (maybeProduct.isEmpty()) throw new ProductNotFoundException("Product with id " + orderItem.getProductId() + " not found");
+            if (maybeProduct.isEmpty()) throw new NotFoundException("Product with id " + orderItem.getProductId() + " not found");
             orderItems.add(OrderItem.builder().product(maybeProduct.get()).quantity(orderItem.getProductQuantity()).order(order).build());
             totalPrice += maybeProduct.get().getPrice() * orderItem.getProductQuantity();
         }

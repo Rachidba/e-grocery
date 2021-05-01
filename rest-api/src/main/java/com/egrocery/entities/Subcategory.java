@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Table(name = "subcategories")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
 public class Subcategory {
     @Id
@@ -24,4 +23,28 @@ public class Subcategory {
     @ManyToOne
     @JoinColumn(name="category_id", nullable=false)
     private Category category;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSubcategoryName() {
+        return subcategoryName;
+    }
+
+    public void setSubcategoryName(String subcategoryName) {
+        this.subcategoryName = subcategoryName;
+    }
+
+    public Long getCategoryId() {
+        return category.getId();
+    }
+
+    public String getCategoryName() {
+        return category.getCategoryName();
+    }
 }
