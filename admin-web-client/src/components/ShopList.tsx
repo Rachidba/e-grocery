@@ -5,12 +5,12 @@ const ShopList: React.FC = (props) => {
   return (
     <List {...props}>
       <Datagrid>
-        <TextField source="profileId" />
-        <TextField source="firstName" />
+        <TextField source="id" />
+        <TextField source="shopName" />
+        <TextField source="fullName" />
         <TextField source="phoneNumber" />
-        <TextField source="shop.name" />
-        <TextField source="shop.geom" />
-        <EditButton basePath="shops" />
+        <TextField source="cityName" />
+        <TextField source="shopLocation" />
       </Datagrid>
     </List>
   );
