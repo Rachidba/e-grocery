@@ -18,7 +18,7 @@ public class UserService {
     }
     public User register(UserVo userVo) {
         if (userRepository.existsByPhoneNumber(userVo.getPhoneNumber()))
-            throw new PhoneNumberAlreadyExistsException("Phone number already used");
+            throw new PhoneNumberAlreadyExistsException("The given PhoneNumber " + userVo.getPhoneNumber() + " already used");
         var user = User.builder()
                 .phoneNumber(userVo.getPhoneNumber())
                 .password(bCryptPasswordEncoder.encode(userVo.getPassword()))
