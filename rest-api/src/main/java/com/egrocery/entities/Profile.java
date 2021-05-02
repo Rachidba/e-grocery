@@ -20,7 +20,7 @@ public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "profile_id")
-    protected Integer profileId;
+    protected Long profileId;
     @Column(name = "first_name")
     protected String firstName;
     @Column(name = "last_name")
@@ -34,7 +34,7 @@ public class Profile {
     public Profile(User user) {
         this.user = user;
     }
-    public Integer getProfileId() {
+    public Long getProfileId() {
         return this.profileId;
     }
     public String getFirstName() {

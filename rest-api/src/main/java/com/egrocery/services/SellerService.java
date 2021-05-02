@@ -2,6 +2,8 @@ package com.egrocery.services;
 
 import com.egrocery.entities.*;
 import com.egrocery.exceptions.CityNotFoundException;
+import com.egrocery.mappers.SellerMapper;
+import com.egrocery.models.SellerVo;
 import com.egrocery.models.UserVo;
 import com.egrocery.models.SellerCreationVo;
 import com.egrocery.repositories.CityRepository;
@@ -17,12 +19,14 @@ public class SellerService {
     private final UserService userService;
     private final CityRepository cityRepository;
     private final ShopService shopService;
+    private final SellerMapper sellerMapper;
 
-    public SellerService(SellerRepository sellerRepository, UserService userService, CityRepository cityRepository, ShopService shopService) {
+    public SellerService(SellerRepository sellerRepository, UserService userService, CityRepository cityRepository, ShopService shopService, SellerMapper sellerMapper) {
         this.sellerRepository = sellerRepository;
         this.userService = userService;
         this.cityRepository = cityRepository;
         this.shopService = shopService;
+        this.sellerMapper = sellerMapper;
     }
     public Seller createEmpty(User user) {
         var seller = Seller.builder().user(user).build();
@@ -32,8 +36,9 @@ public class SellerService {
         return sellerRepository.save(seller);
     }
 
-    public List<Seller> getAllSellers() {
-        return sellerRepository.findAll();
+    public List<SellerVo> getAllSellers() {
+        var sellers = sellerRepository.findAll();
+        return sellerMapper.mapTo(sellers);
     }
 
     @Transactional
