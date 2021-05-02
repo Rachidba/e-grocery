@@ -9,23 +9,29 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
 public class SellerCreationVo {
+    @NotEmpty
     private String phoneNumber;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private String firstName;
     private String lastName;
+    @NotEmpty
     private String shopName;
     private String description;
     private boolean accountEnabled;
+    @NotNull
     private long cityId;
     @JsonSerialize(using = PointToJsonSerializer.class)
     @JsonDeserialize(using = JsonToPointDeserializer.class)
-    @Column(columnDefinition="Geometry")
+    @NotEmpty
     public com.vividsolutions.jts.geom.Point geom;
 }

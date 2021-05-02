@@ -37,13 +37,13 @@ public class AjaxAwareAuthenticationFailureHandler implements AuthenticationFail
 		response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 		
 		if (e instanceof BadCredentialsException) {
-			mapper.writeValue(response.getWriter(), ErrorResponse.of("Invalid username or password", ErrorCode.AUTHENTICATION, HttpStatus.UNAUTHORIZED));
+			mapper.writeValue(response.getWriter(), ErrorResponse.of("Invalid username or password", HttpStatus.UNAUTHORIZED, ErrorCode.AUTHENTICATION));
 		} else if (e instanceof JwtExpiredTokenException) {
-			mapper.writeValue(response.getWriter(), ErrorResponse.of("Token has expired", ErrorCode.JWT_TOKEN_EXPIRED, HttpStatus.UNAUTHORIZED));
+			mapper.writeValue(response.getWriter(), ErrorResponse.of("Token has expired", HttpStatus.UNAUTHORIZED, ErrorCode.JWT_TOKEN_EXPIRED));
 		} else if (e instanceof AuthMethodNotSupportedException) {
-		    mapper.writeValue(response.getWriter(), ErrorResponse.of(e.getMessage(), ErrorCode.AUTHENTICATION, HttpStatus.UNAUTHORIZED));
+		    mapper.writeValue(response.getWriter(), ErrorResponse.of(e.getMessage(), HttpStatus.UNAUTHORIZED, ErrorCode.AUTHENTICATION));
 		}
 
-		mapper.writeValue(response.getWriter(), ErrorResponse.of("Authentication failed", ErrorCode.AUTHENTICATION, HttpStatus.UNAUTHORIZED));
+		mapper.writeValue(response.getWriter(), ErrorResponse.of("Authentication failed", HttpStatus.UNAUTHORIZED, ErrorCode.AUTHENTICATION));
 	}
 }
