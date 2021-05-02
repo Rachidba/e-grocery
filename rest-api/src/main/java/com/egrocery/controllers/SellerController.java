@@ -2,6 +2,7 @@ package com.egrocery.controllers;
 
 import com.egrocery.entities.Seller;
 import com.egrocery.models.SellerCreationVo;
+import com.egrocery.models.SellerVo;
 import com.egrocery.services.SellerService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class SellerController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Seller>> getAllSellers() {
+    public ResponseEntity<List<SellerVo>> getAllSellers() {
         var sellers = sellerService.getAllSellers();
         var responseHeaders = new HttpHeaders();
         responseHeaders.set("Access-Control-Expose-Headers", "Content-Range");

@@ -20,7 +20,7 @@ public class Seller extends Profile {
     @JoinColumn(name = "shop_id", referencedColumnName = "id")
     private Shop shop;
 
-    public Integer getProfileId() {
+    public Long getProfileId() {
         return profileId;
     }
 }
