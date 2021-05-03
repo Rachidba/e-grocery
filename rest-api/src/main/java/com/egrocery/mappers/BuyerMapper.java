@@ -15,6 +15,7 @@ public interface BuyerMapper {
             @Mapping(target="fullName", expression="java(buyer.getFirstName() + ' ' + buyer.getLastName())"),
             @Mapping(target="homeLocationGeom", expression="java(buyer.getHomeLocationGeom())"),
             @Mapping(target="cityName", expression="java(buyer.getCity().getName())"),
+            @Mapping(target="accountEnabled", expression="java(buyer.isAccountEnabled())"),
     })
     BuyerVo mapTo(Buyer buyer);
 

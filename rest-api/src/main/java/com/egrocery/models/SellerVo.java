@@ -22,4 +22,5 @@ public class SellerVo {
     @JsonSerialize(using = PointToJsonSerializer.class)
     @JsonDeserialize(using = JsonToPointDeserializer.class)
     private com.vividsolutions.jts.geom.Point shopLocation;
+    private boolean accountEnabled;
 }

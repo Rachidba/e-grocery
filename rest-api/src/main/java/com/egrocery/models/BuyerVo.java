@@ -18,6 +18,7 @@ public class BuyerVo {
     private String fullName;
     private String phoneNumber;
     private String cityName;
+    private boolean accountEnabled;
     @JsonSerialize(using = PointToJsonSerializer.class)
     @JsonDeserialize(using = JsonToPointDeserializer.class)
     private com.vividsolutions.jts.geom.Point homeLocationGeom;
