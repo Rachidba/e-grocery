@@ -4,13 +4,11 @@ import {
   SimpleForm,
   PasswordInput,
   NumberInput,
-  TextField,
-  DateField,
-  EditButton,
   TextInput,
+  BooleanInput,
 } from "react-admin";
 
-const ShopCreation: React.FC = (props) => {
+const BuyerCreation: React.FC = (props) => {
   return (
     <Create title="Create new Shop" {...props}>
       <SimpleForm>
@@ -18,13 +16,12 @@ const ShopCreation: React.FC = (props) => {
         <PasswordInput source="password" />
         <TextInput source="firstName" />
         <TextInput source="lastName" />
-        <TextInput source="shopName" />
-        <TextInput source="description" />
         <NumberInput source="cityId" />
-        <TextInput source="geom" />
+        <TextInput source="homeLocationGeom" />
+        <BooleanInput source="accountEnabled" />
       </SimpleForm>
     </Create>
   );
 };
 
-export default ShopCreation;
+export default BuyerCreation;
