@@ -16,6 +16,7 @@ public interface SellerMapper {
             @Mapping(target="shopName", expression="java(seller.getShop().getName())"),
             @Mapping(target="shopLocation", expression="java(seller.getShop().getGeom())"),
             @Mapping(target="cityName", expression="java(seller.getShop().getCity().getName())"),
+            @Mapping(target="accountEnabled", expression="java(seller.isAccountEnabled())"),
     })
     SellerVo mapTo(Seller seller);
 

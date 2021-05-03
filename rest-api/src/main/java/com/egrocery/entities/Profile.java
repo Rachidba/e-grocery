@@ -49,4 +49,7 @@ public class Profile {
     public String getPhoneNumber() {
         return user.getPhoneNumber();
     }
+    public boolean isAccountEnabled() {
+        return this.user.isEnabled();
+    }
 }
