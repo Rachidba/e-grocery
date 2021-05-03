@@ -10,5 +10,6 @@ public class SecurityConstants {
     public static final String AUTHENTICATION_URL = "/api/auth/login";
     public static final String SHOPS_URL = "/api/shops/**";
     public static final String SELLERS_URL = "/api/sellers";
+    public static final String BUYERS_URL = "/api/buyers";
     public static final String PRODUCTS_URL = "/api/products/**";
 }
