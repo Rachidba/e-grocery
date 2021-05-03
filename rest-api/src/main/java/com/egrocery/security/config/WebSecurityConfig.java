@@ -124,6 +124,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, SecurityConstants.ORDER_URL).access("hasRole('" + Role.ROLE_BUYER.toString() + "')")
                 .antMatchers(HttpMethod.POST, SecurityConstants.SELLERS_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
                 .antMatchers(HttpMethod.GET, SecurityConstants.SELLERS_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
+                .antMatchers(HttpMethod.POST, SecurityConstants.BUYERS_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
+                .antMatchers(HttpMethod.GET, SecurityConstants.BUYERS_URL).access("hasRole('" + Role.ROLE_ADMIN.toString() + "')")
 
                 .and()
                 .authorizeRequests()
