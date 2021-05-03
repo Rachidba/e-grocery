@@ -1,7 +1,7 @@
 import React from "react";
-import { List, Datagrid, TextField, DateField, EditButton } from "react-admin";
+import { List, Datagrid, TextField, BooleanField } from "react-admin";
 
-const ShopList: React.FC = (props) => {
+const SellersList: React.FC = (props) => {
   return (
     <List {...props}>
       <Datagrid>
@@ -11,9 +11,10 @@ const ShopList: React.FC = (props) => {
         <TextField source="phoneNumber" />
         <TextField source="cityName" />
         <TextField source="shopLocation" />
+        <BooleanField source="accountEnabled" />
       </Datagrid>
     </List>
   );
 };
 
-export default ShopList;
+export default SellersList;

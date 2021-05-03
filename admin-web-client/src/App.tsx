@@ -2,9 +2,10 @@ import * as React from "react";
 import { Admin, Resource, fetchUtils } from "react-admin";
 import restProvider from "ra-data-simple-rest";
 import authProvider from "./authProvider";
-
-import ShopList from "./components/ShopList";
-import ShopCreation from "./components/ShopCreation";
+import BuyersList from "./components/Buyer/BuyersList";
+import SellersList from "./components/Seller/SellersList";
+import SellerCreation from "./components/Seller/SellerCreation";
+import BuyerCreation from "./components/Buyer/BuyerCreation";
 
 interface fetchUtilsResponse {
   status: number;
@@ -30,7 +31,8 @@ const dataProvider = restProvider("http://localhost:8080/api", httpClient);
 
 const App = () => (
   <Admin dataProvider={dataProvider} authProvider={authProvider}>
-    <Resource name="sellers" list={ShopList} create={ShopCreation} />
+    <Resource name="sellers" list={SellersList} create={SellerCreation} />
+    <Resource name="buyers" list={BuyersList} create={BuyerCreation} />
   </Admin>
 );
 
