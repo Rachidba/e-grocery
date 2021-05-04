@@ -9,30 +9,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-import java.time.Instant;
-import java.util.Date;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class OrderVo {
-    private Long id;
-    private Set<OrderItemVo> orderItems;
-    private double totalPrice;
+public class OrderCreationVo {
+    @NotNull
     private Long buyerId;
+    @NotNull
     private Long sellerId;
-    private String sellerFullName;
-    private Long shopId;
-    private String shopName;
-    private String city;
+    @NotBlank
+    private double totalPrice;
+    @NotEmpty
+    private Set<OrderItemCreationVo> orderItems;
     @JsonSerialize(using = PointToJsonSerializer.class)
     @JsonDeserialize(using = JsonToPointDeserializer.class)
-    private com.vividsolutions.jts.geom.Point shopLocation;
-    @JsonSerialize(using = PointToJsonSerializer.class)
-    @JsonDeserialize(using = JsonToPointDeserializer.class)
+    @NotEmpty
     private com.vividsolutions.jts.geom.Point deliveryLocationGeom;
-    private Date createdDate;
 }

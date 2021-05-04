@@ -2,7 +2,9 @@ package com.egrocery.services;
 
 import com.egrocery.entities.Buyer;
 import com.egrocery.entities.Role;
+import com.egrocery.entities.Seller;
 import com.egrocery.exceptions.CityNotFoundException;
+import com.egrocery.exceptions.NotFoundException;
 import com.egrocery.mappers.BuyerMapper;
 import com.egrocery.models.BuyerCreationVo;
 import com.egrocery.models.BuyerVo;
@@ -31,6 +33,12 @@ public class BuyerService {
     public List<BuyerVo> getAllBuyers() {
         var buyers = buyerRepository.findAll();
         return buyerMapper.mapTo(buyers);
+    }
+
+    public Buyer getById(Long profileId) {
+        var buyer = buyerRepository.findByProfileId(profileId);
+        if (buyer.isEmpty()) throw new NotFoundException(String.format("Buyer with id %d not found", profileId));
+        return buyer.get();
     }
 
     @Transactional

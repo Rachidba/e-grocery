@@ -9,11 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class OrderItemVo {
-    private Long id;
+public class OrderItemCreationVo {
     private Long productId;
-    private String productTitle;
-    private String productImgUrl;
-    private String productPrice;
     private int quantity;
 }

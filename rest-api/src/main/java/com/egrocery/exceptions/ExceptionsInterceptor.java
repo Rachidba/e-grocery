@@ -31,6 +31,13 @@ public class ExceptionsInterceptor {
         return new ResponseEntity(errorResponse.getMessage(), errorResponse.getStatus());
     }
 
+    @ExceptionHandler(InvalidOrderTotalPriceException.class)
+    public ResponseEntity<String> handleInvalidOrderTotalPriceException(InvalidOrderTotalPriceException exception) {
+        var errorResponse = ErrorResponse.of(exception.getMessage(), HttpStatus.CONFLICT);
+        logger.error("Exception: " + exception + ", ErrorResponse: " + errorResponse);
+        return new ResponseEntity(errorResponse.getMessage(), errorResponse.getStatus());
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationException(MethodArgumentNotValidException exception) {
         var errors = new HashMap<String, String>();
