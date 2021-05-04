@@ -1,9 +1,6 @@
 package com.egrocery.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,21 +8,30 @@ import javax.persistence.*;
 @Table(name="order_items")
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Builder
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     private Long id;
 
     @ManyToOne
     @JoinColumn(name="product_id", nullable=false)
+    @Getter
+    @Setter
     private Product product;
 
     @Column(name = "quantity")
+    @Getter
+    @Setter
     private int quantity;
 
     @ManyToOne
     @JoinColumn(name="order_id", nullable=false)
     private Order order;
+
+    public Long getOrderId() {
+        return order.getId();
+    }
 }

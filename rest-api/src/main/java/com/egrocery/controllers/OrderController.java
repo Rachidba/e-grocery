@@ -1,13 +1,13 @@
 package com.egrocery.controllers;
 
-import com.egrocery.entities.Order;
-import com.egrocery.exceptions.NotFoundException;
+import com.egrocery.models.OrderCreationVo;
 import com.egrocery.models.OrderVo;
 import com.egrocery.services.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,21 +20,15 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> getAllOrders() {
+    public ResponseEntity<List<OrderVo>> getAllOrders() {
         var orders = orderService.getAllOrders();
         var httpStatus = orders.isEmpty() ? HttpStatus.NO_CONTENT : HttpStatus.OK;
         return ResponseEntity.status(httpStatus).body(orders);
     }
 
     @PostMapping
-    public ResponseEntity postOrder(@RequestBody OrderVo orderVo) {
-        try {
-            orderService.createOrder(orderVo);
-            return ResponseEntity.ok().build();
-        } catch (NotFoundException ex) {
-            return ResponseEntity.notFound().build();
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(400).build();
-        }
+    public ResponseEntity<OrderVo> placeOrder(@Valid @RequestBody OrderCreationVo orderCreationVo) {
+        var savedOrder = orderService.createOrder(orderCreationVo);
+        return ResponseEntity.ok(savedOrder);
     }
 }
