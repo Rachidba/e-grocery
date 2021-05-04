@@ -3,6 +3,7 @@ package com.egrocery.controllers;
 import com.egrocery.models.OrderCreationVo;
 import com.egrocery.models.OrderVo;
 import com.egrocery.services.OrderService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +23,11 @@ public class OrderController {
     @GetMapping
     public ResponseEntity<List<OrderVo>> getAllOrders() {
         var orders = orderService.getAllOrders();
+        var responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Expose-Headers", "Content-Range");
+        responseHeaders.set("Content-Range", String.format("shops 0-%d/%d", orders.size(), orders.size()));
         var httpStatus = orders.isEmpty() ? HttpStatus.NO_CONTENT : HttpStatus.OK;
-        return ResponseEntity.status(httpStatus).body(orders);
+        return ResponseEntity.status(httpStatus).headers(responseHeaders).body(orders);
     }
 
     @PostMapping

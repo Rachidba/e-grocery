@@ -6,6 +6,7 @@ import BuyersList from "./components/Buyer/BuyersList";
 import SellersList from "./components/Seller/SellersList";
 import SellerCreation from "./components/Seller/SellerCreation";
 import BuyerCreation from "./components/Buyer/BuyerCreation";
+import OrdersList from "./components/Order/OrdersList";
 
 interface fetchUtilsResponse {
   status: number;
@@ -33,6 +34,7 @@ const App = () => (
   <Admin dataProvider={dataProvider} authProvider={authProvider}>
     <Resource name="sellers" list={SellersList} create={SellerCreation} />
     <Resource name="buyers" list={BuyersList} create={BuyerCreation} />
+    <Resource name="orders" list={OrdersList} />
   </Admin>
 );
 
