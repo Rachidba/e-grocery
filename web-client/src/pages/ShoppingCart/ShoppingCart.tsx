@@ -11,7 +11,6 @@ import { getMyLocation } from '../../services/locationService';
 const useStyle = makeStyles(() => ({
   root: {
     minHeight: '100vh',
-    marginTop: '25px',
   },
   cartItems: {
     backgroundColor: backgroundColor,
