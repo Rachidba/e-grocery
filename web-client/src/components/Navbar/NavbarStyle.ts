@@ -39,6 +39,9 @@ const navbarStyle = makeStyles(() => ({
   backText: {
     fontSize: '16px',
   },
+  navButton: {
+    height: '25px',
+  },
 }));
 
 export default navbarStyle;

@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useLocation, useHistory } from 'react-router-dom';
 
+/* eslint-disable max-lines-per-function */
 const Navbar: React.FC = () => {
   const classes = navbarStyle();
   const location = useLocation();
@@ -34,14 +35,20 @@ const Navbar: React.FC = () => {
   const goToPreviousPath = () => {
     history.goBack();
   };
+  const goNavText = (): string => {
+    return window.location.href.indexOf('nearby-shops') > -1
+      ? 'Panier'
+      : 'Produits';
+  };
   function renderWithBackArrow() {
     return (
       <IconButton
         aria-label="back"
         onClick={goToPreviousPath}
-        className={classes.backText}
+        className={classes.navButton}
       >
         <ArrowBackIcon style={{ fontSize: 30 }} />
+        <span className={classes.backText}>{goNavText()}</span>
       </IconButton>
     );
   }
