@@ -8,19 +8,25 @@ import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { openSideDrawer } from '../../store/SideDrawer/actions';
 
 /* eslint-disable max-lines-per-function */
 const Navbar: React.FC = () => {
   const classes = navbarStyle();
   const location = useLocation();
   const history = useHistory();
+  const dispatch = useDispatch();
   const numberOfProductInCart: number = useSelector(
     (state: RootState) => state.shoppingCart.shoppingCartItems.length,
   );
   function renderWithCard() {
     return (
       <>
-        <div className={classes.menu}>
+        <div
+          className={classes.menu}
+          onClick={() => dispatch(openSideDrawer())}
+        >
           <MenuIcon color="primary" style={{ fontSize: 35 }} />
         </div>
         <Link to={'/shopping-cart'}>
