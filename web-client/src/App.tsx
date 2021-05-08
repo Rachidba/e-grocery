@@ -13,8 +13,9 @@ import {
   LoadCartItemFromLocalStorage,
   SaveCartItemsToLocalStorage,
 } from './store/shoppingCart/actions';
-import { useDispatch } from 'react-redux';
 import NearbyShopsList from './pages/NearbyShopsList/NearbyShopsList';
+import Drawer from './components/Drawer/Drawer';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
   app: {
@@ -37,6 +38,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={Theme}>
       <Navbar />
+      <Drawer />
       <Container className={classes.app}>
         <Switch>
           <Route exact path="/" component={CategoriesList} />
