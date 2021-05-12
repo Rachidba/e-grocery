@@ -16,6 +16,7 @@ import {
 import NearbyShopsList from './pages/NearbyShopsList/NearbyShopsList';
 import Drawer from './components/Drawer/Drawer';
 import { useDispatch } from 'react-redux';
+import Login from './pages/Login/Login';
 
 const useStyles = makeStyles({
   app: {
@@ -50,6 +51,7 @@ const App: React.FC = () => {
           <Route path="/products/:subcategoryId" component={ProductsList} />
           <Route path="/shopping-cart" component={ShoppingCart} />
           <Route path="/nearby-shops" component={NearbyShopsList} />
+          <Route path="/Login" component={Login} />
           <Route component={NotFound} />
         </Switch>
       </Container>
