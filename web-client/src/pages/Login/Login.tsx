@@ -62,11 +62,11 @@ const Login: React.FC = () => {
     showPassword: false,
   });
 
-  const handleChange = (prop: keyof LoginInput) => (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  const handleChange =
+    (prop: keyof LoginInput) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValues({ ...values, [prop]: event.target.value });
+    };
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });

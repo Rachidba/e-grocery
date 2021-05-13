@@ -1,16 +1,15 @@
-import { makeStyles, Button } from '@material-ui/core';
+import { makeStyles, Button, Container } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { getShops } from '../../services/apiMock';
 import { ShopWithSelection } from '../../store/types';
-import NearbyShopsItem from './NearbyShopsItem/NearbyShopsItem';
+import MapContainer from './MapContainer';
 
 const useStyle = makeStyles(() => ({
-  shops: {
+  root: {
     display: 'grid',
-    rowGap: '5px',
-    minHeight: '100vh',
-    alignContent: 'start',
-    alignItems: 'center',
+  },
+  mapContainer: {
+    minHeight: '70vh',
   },
   orderButtonContainer: {
     marginTop: '10px',
@@ -25,8 +24,11 @@ const useStyle = makeStyles(() => ({
   title: {
     textAlign: 'center',
   },
+  selectedShop: {
+    textAlign: 'center',
+  },
 }));
-
+/* eslint-disable sonarjs/cognitive-complexity */
 const NearbyShopsList: React.FC = () => {
   const classes = useStyle();
   const [shopsWithSelection, setShopsWithSelection] = useState<
@@ -56,25 +58,29 @@ const NearbyShopsList: React.FC = () => {
       setShopsWithSelection(shopsWithSelect);
     }
   }, []);
-
   return (
-    <>
+    <div className={classes.root}>
       <div className={classes.title}>
         <h3>Choisissez l epecier</h3>
       </div>
-      <div className={classes.shops}>
-        {shopsWithSelection.map((shop) => (
-          <NearbyShopsItem
-            key={shop.shop.id}
-            shopWithSelection={shop}
-            updateSelected={updateSelected}
-          />
-        ))}
-        <div className={classes.orderButtonContainer}>
-          <Button className={classes.orderButton}>Passer la commande</Button>
-        </div>
+      <Container className={classes.mapContainer}>
+        <MapContainer
+          shopsWithSelection={shopsWithSelection}
+          updateSelected={updateSelected}
+        />
+      </Container>
+      <div className={classes.selectedShop}>
+        <h3>
+          {shopsWithSelection.length > 0
+            ? 'Vous avez selectionner: ' +
+              shopsWithSelection.filter((i) => i.isSelected)[0].shop.name
+            : ''}
+        </h3>
       </div>
-    </>
+      <div className={classes.orderButtonContainer}>
+        <Button className={classes.orderButton}>Passer la commande</Button>
+      </div>
+    </div>
   );
 };
 

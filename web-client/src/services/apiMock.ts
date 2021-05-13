@@ -28,8 +28,8 @@ export function getShops(): Shop[] {
       name: 'SuperBrahim',
       imgUrl: 'http://via.placeholder.com/640x360',
       geom: {
-        latitude: 33.573109,
-        longitude: -7.589843,
+        latitude: 33.58026,
+        longitude: -7.63022,
       },
       distance: 23.4,
     },
@@ -39,7 +39,7 @@ export function getShops(): Shop[] {
       imgUrl: 'http://via.placeholder.com/640x360',
       geom: {
         latitude: 33.573109,
-        longitude: -7.589843,
+        longitude: -7.63022,
       },
       distance: 50,
     },
@@ -48,8 +48,8 @@ export function getShops(): Shop[] {
       name: 'Hanouti',
       imgUrl: 'http://via.placeholder.com/640x365',
       geom: {
-        latitude: 32.573109,
-        longitude: -8.589843,
+        latitude: 33.59715,
+        longitude: -7.63515,
       },
       distance: 100,
     },

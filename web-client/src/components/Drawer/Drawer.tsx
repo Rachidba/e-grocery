@@ -28,8 +28,6 @@ const useStyles = makeStyles({
     width: 'auto',
   },
 });
-
-/* eslint-disable max-lines-per-function */
 const Drawer: React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -39,18 +37,20 @@ const Drawer: React.FC = () => {
   );
   /* eslint-disable sonarjs/cognitive-complexity */
   // eslint-disable-next-line
-  const toggleDrawer = (open: boolean): any => (event: Event): any => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      ((event as KeyboardEvent).key === 'Tab' ||
-        (event as KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
-    if (open) dispatch(openSideDrawer());
-    else dispatch(closeSideDrawer());
-  };
+  const toggleDrawer =
+    (open: boolean): any =>
+    (event: Event): any => {
+      if (
+        event &&
+        event.type === 'keydown' &&
+        ((event as KeyboardEvent).key === 'Tab' ||
+          (event as KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+      if (open) dispatch(openSideDrawer());
+      else dispatch(closeSideDrawer());
+    };
 
   const list = () => (
     <div
